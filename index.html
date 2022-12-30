@@ -38,6 +38,9 @@
         });
         var nav = new maplibregl.NavigationControl();
         map.addControl(nav, 'top-right');
+        map.addControl(new maplibregl.AttributionControl({
+            customAttribution: "<a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a> | <a href=\"https://github.com/wipfli/single-highway-layer\" target=\"_blank\">Source on GitHub</a>"
+        }));
 
     </script>
 </body>
