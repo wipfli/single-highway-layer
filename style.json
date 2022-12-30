@@ -1,0 +1,38 @@
+{
+    "version": 8,
+    "name": "single highway layer",
+    "sources": {
+      "single-highway-layer":{
+        "type": "vector",
+        "tiles": ["pmtiles://data/single-highway-layer.pmtiles/{z}/{x}/{y}"],
+        "maxzoom": 14
+      }
+    },
+    "layers": [
+      {
+        "id": "highway",
+        "type": "line",
+        "source": "single-highway-layer",
+        "source-layer": "highway",
+        "layout": {
+          "line-cap": "butt",
+          "line-join": "round",
+          "visibility": "visible",
+          "line-sort-key": ["to-number", ["get", "line-sort-key"]]
+        },
+        "paint": {
+          "line-color": ["get", "line-color"],
+          "line-width": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            14,
+            ["to-number", ["get", "line-width"]],
+            20,
+            ["to-number", ["get", "line-width-z20"]]
+          ]
+        }
+      }
+    ],
+    "id": "single-highway-layer"
+  }
